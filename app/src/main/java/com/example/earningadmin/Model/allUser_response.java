@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class allUser_response {
-    class User {
+    public class User {
         @SerializedName("user_id")
         private String user_id;
         @SerializedName("user_name")

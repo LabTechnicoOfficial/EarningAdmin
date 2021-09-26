@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class pendingWithdrowRequest_response {
-    class pendingRequest{
+    public class pendingRequest{
         @SerializedName("request_id")
         private String request_id;
         @SerializedName("user_id")

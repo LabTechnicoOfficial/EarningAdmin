@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class allWithdrow_response {
-    class history {
+    public class history {
         @SerializedName("message")
         private String message;
 
