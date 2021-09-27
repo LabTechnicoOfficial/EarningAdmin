@@ -7,8 +7,6 @@ public class balance_response {
     @SerializedName("balance")
     private String balance;
 
-
-
     public String getBalance() {
         return balance;
     }

@@ -73,6 +73,39 @@
                     android:rowCount="2">
 
                     <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/shape"
+                        android:backgroundTint="@color/pink"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/distance20">
+
+                        <TextView
+                            android:id="@+id/balanceTextID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:text="Balance"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:id="@+id/usersButtonID"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -147,7 +180,7 @@
                         android:layout_columnWeight="1"
                         android:layout_margin="5dp"
                         android:background="@drawable/shape"
-                        android:backgroundTint="@color/pink"
+                        android:backgroundTint="@color/dark_green"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
@@ -166,6 +199,78 @@
                             android:gravity="center"
                             android:lines="2"
                             android:text="Withdraw\nHistory"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/withdrawCommissionButtonID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/shape"
+                        android:backgroundTint="@color/pink"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/distance20">
+
+                        <TextView
+                            android:id="@+id/withdrawCommissionTextID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:text="Withdraw\nCommission"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/videoCommissionButtonID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/shape"
+                        android:backgroundTint="@color/purple"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/distance20">
+
+                        <TextView
+                            android:id="@+id/videoCommissionTextID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:text="Video\nCommission"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
                             android:textSize="15sp"

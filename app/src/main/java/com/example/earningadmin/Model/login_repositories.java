@@ -12,24 +12,24 @@ public class login_repositories {
     private static login_repositories login_repositories;
 
     private login_repositories() {
-        api=ApiUtilize.api_response();
-        data=new MutableLiveData<>();
+        api = ApiUtilize.api_response();
+        data = new MutableLiveData<>();
     }
-    public synchronized static login_repositories getInstance()
-    {
-        if(login_repositories==null)
+
+    public synchronized static login_repositories getInstance() {
+        if (login_repositories == null)
             return new login_repositories();
         return login_repositories;
     }
 
-    public MutableLiveData<response> login(String phone,String password)
-    {
-        Call<response> call= api.login(phone, password);
+    public MutableLiveData<response> login(String phone, String password) {
+        Call<response> call = api.login(phone, password);
         call.enqueue(new Callback<response>() {
             @Override
             public void onResponse(Call<response> call, Response<response> response) {
-                if(response.isSuccessful())
+                if (response.isSuccessful()) {
                     data.postValue(response.body());
+                }
             }
 
             @Override

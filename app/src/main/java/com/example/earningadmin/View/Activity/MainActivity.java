@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.earningadmin.R;
-import com.example.earningadmin.View.Fragment.Main_fragment;
+import com.example.earningadmin.View.Fragment.Login_fragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new Main_fragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new Login_fragment()).commit();
         }
         setContentView(R.layout.activity_main);
 

@@ -11,14 +11,18 @@
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/card_pendin_request.xml" value="0.20416666666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/card_withdraw_history.xml" value="0.20416666666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/exit_alert.xml" value="0.20416666666666666" />
+        <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/loader_alert.xml" value="0.20416666666666666" />
+        <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/login_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/main_fragment.xml" value="0.25" />
+        <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/video_commission_fragment.xml" value="0.19010416666666666" />
+        <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/withdraw_commission_update_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/withdraw_history_fragment.xml" value="0.19010416666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/withdraw_request_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/menu/menu_item.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
