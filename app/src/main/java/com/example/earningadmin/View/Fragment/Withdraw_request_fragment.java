@@ -1,5 +1,8 @@
 package com.example.earningadmin.View.Fragment;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -29,6 +32,8 @@ import com.google.android.material.button.MaterialButtonToggleGroup;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class Withdraw_request_fragment extends Fragment implements Withdraw_request_adapter.OnItemClickListener {
 
@@ -41,6 +46,7 @@ public class Withdraw_request_fragment extends Fragment implements Withdraw_requ
     private Withdraw_request_adapter adapter;
     Session_Management session_management;
     ApproveRequestViewModel approveRequestViewModel;
+    Dialog loaderDialog;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -89,6 +95,11 @@ public class Withdraw_request_fragment extends Fragment implements Withdraw_requ
         totalAmountText = (TextView) view.findViewById(R.id.totalAmountTextID);
         toggleGroupButton = (MaterialButtonToggleGroup) view.findViewById(R.id.toggleGroupButtonID);
 
+        loaderDialog = new Dialog(getActivity());
+        loaderDialog.setContentView(R.layout.loader_alert);
+        loaderDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        loaderDialog.setCancelable(false);
+
         toggleGroupButton.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
             public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
@@ -117,17 +128,19 @@ public class Withdraw_request_fragment extends Fragment implements Withdraw_requ
         String accept_number = session_management.getAcceptPhone();
         String req_date = response.getRequest_date();
         String accept_date = new SimpleDateFormat("dd-MMM-yyyy").format(Calendar.getInstance().getTime());
-
-
-        approveRequestViewModel.approveRequest(requestID, userID, userName, w_amount, w_number, accept_number, req_date, accept_date).observe(getViewLifecycleOwner(), new Observer<Request_approve_response>() {
+        String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+        loaderDialog.show();
+        approveRequestViewModel.approveRequest(requestID, userID, userName, w_amount, w_number, accept_number, req_date, accept_date+" "+currentTime).observe(getViewLifecycleOwner(), new Observer<Request_approve_response>() {
             @Override
             public void onChanged(Request_approve_response request_approve_response) {
-                Toast.makeText(getActivity(), request_approve_response.getMessage(), Toast.LENGTH_SHORT).show();
+                loaderDialog.dismiss();
                 if(request_approve_response.getMessage().equals("added successfully")){
-                    pendingList.getPending_list().remove(position);
-                    adapter.notifyDataSetChanged();
+                    //pendingList.getPending_list().remove(position);
+                   // adapter.notifyDataSetChanged();
+                    Toast.makeText(getActivity(), request_approve_response.getMessage(), Toast.LENGTH_SHORT).show();
+                    pending_list_func();
                 }else if(request_approve_response.getMessage().equals("fail to add")){
-                    Toast.makeText(getActivity(), getString(R.string.something_wrong), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), request_approve_response.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
