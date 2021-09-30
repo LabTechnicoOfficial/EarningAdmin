@@ -16,7 +16,7 @@ public class pendingWithdrowRequest_response {
         private String amount;
         @SerializedName("number")
         private String number;
-        @SerializedName("request_dtae")
+        @SerializedName("request_date")
         private String request_date;
 
         public String getRequest_id() {

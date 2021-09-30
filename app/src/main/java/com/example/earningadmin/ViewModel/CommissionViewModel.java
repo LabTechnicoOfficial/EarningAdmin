@@ -32,4 +32,12 @@ public class CommissionViewModel extends AndroidViewModel {
     public LiveData<String> updateVideoCommission(String rate) {
         return Commission_repositories.getInstance().updateVideoCommission(rate);
     }
+
+    public LiveData<Commission_response> getVideoWatchCommission() {
+        return Commission_repositories.getInstance().getVideoWatchCommission();
+    }
+
+    public LiveData<String> updateVideoWatchCommission(String rate) {
+        return Commission_repositories.getInstance().updateVideoWatchCommission(rate);
+    }
 }

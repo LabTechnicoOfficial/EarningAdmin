@@ -112,4 +112,46 @@ public class Commission_repositories {
         return updateData;
     }
 
+    public MutableLiveData<Commission_response> getVideoWatchCommission() {
+        if (data == null) {
+            data = new MutableLiveData<>();
+        }
+
+        Call<Commission_response> call = commissionApi.getVideoWatchCommission();
+        call.enqueue(new Callback<Commission_response>() {
+            @Override
+            public void onResponse(Call<Commission_response> call, Response<Commission_response> response) {
+                if (response.isSuccessful())
+                    data.postValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Commission_response> call, Throwable t) {
+
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<String> updateVideoWatchCommission(String rate) {
+        if (updateData == null) {
+            updateData = new MutableLiveData<>();
+        }
+
+        Call<String> call = commissionApi.updateVideoWatchCommission(rate);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful())
+                    updateData.postValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
+        return updateData;
+    }
+
 }

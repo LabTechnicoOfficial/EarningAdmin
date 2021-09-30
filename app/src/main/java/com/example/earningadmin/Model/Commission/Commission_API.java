@@ -18,4 +18,11 @@ public interface Commission_API {
     //comission_video_update_rate.php
     @GET("comission_video_update_rate.php")
     Call<String> updateVideoCommission(@Query("comission") String rate);
+
+    //watch rate
+    @GET("video_watch_rate.php")
+    Call<Commission_response> getVideoWatchCommission();
+
+    @GET("video_watch_rate_update.php")
+    Call<String> updateVideoWatchCommission(@Query("rate") String rate);
 }

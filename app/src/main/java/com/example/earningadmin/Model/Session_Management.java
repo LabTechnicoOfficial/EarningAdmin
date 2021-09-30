@@ -11,6 +11,7 @@ public class Session_Management {
     String SHARED_PREF_NAME = "session";
     String SESSION_KEY = "SESSION_ID";
     String SESSION_PHONE = "SESSION_PHONE";
+    String SESSION_ACCEPT_PHONE = "SESSION_ACCEPT_PHONE";
     String SESSION_PASSWORD = "SESSION_PASSWORD";
 
     public Session_Management(Context con) {
@@ -39,5 +40,15 @@ public class Session_Management {
 
     public void removeSession() {
         editor.putString(SESSION_PHONE, "-1").commit();
+    }
+
+    public void saveAcceptPhone(String phn) {
+        String phone= phn;
+        editor.putString(SESSION_ACCEPT_PHONE, phone);
+        editor.commit();
+    }
+
+    public String getAcceptPhone() {
+        return sharedPreferences.getString(SESSION_ACCEPT_PHONE, "-1");
     }
 }

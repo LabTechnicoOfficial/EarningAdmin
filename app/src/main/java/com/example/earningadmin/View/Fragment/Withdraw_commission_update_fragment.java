@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.earningadmin.Model.Commission.Commission_update_response;
@@ -31,6 +32,12 @@ public class Withdraw_commission_update_fragment extends Fragment {
     AppCompatButton updateButton;
     Dialog loaderDialog;
     CommissionViewModel commissionViewModel;
+    String current_rate;
+    TextView currentRateText;
+
+    public Withdraw_commission_update_fragment(String current_rate) {
+        this.current_rate = current_rate;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,6 +54,9 @@ public class Withdraw_commission_update_fragment extends Fragment {
         rateText = (TextInputEditText) view.findViewById(R.id.rateTextID);
         rateError = (TextInputLayout) view.findViewById(R.id.rateErrorID);
         updateButton = (AppCompatButton) view.findViewById(R.id.updateButtonID);
+
+        currentRateText = (TextView) view.findViewById(R.id.currentRateID);
+        currentRateText.setText(current_rate);
 
         loaderDialog = new Dialog(getActivity());
         loaderDialog.setContentView(R.layout.loader_alert);

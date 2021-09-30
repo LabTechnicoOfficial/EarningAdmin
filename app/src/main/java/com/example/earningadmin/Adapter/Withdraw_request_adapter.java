@@ -1,15 +1,22 @@
 package com.example.earningadmin.Adapter;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.earningadmin.Model.RequestApprove.Phone_response;
+import com.example.earningadmin.Model.Session_Management;
 import com.example.earningadmin.Model.pendingWithdrowRequest_response;
 import com.example.earningadmin.R;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class Withdraw_request_adapter extends RecyclerView.Adapter<Withdraw_request_adapter.AppViewHolder> {
 
@@ -41,9 +48,21 @@ public class Withdraw_request_adapter extends RecyclerView.Adapter<Withdraw_requ
         return pendingList.getPending_list().size();
     }
 
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener {
+        void OnItemClick(int position);
+    }
+
+    public void setOnClickListener(OnItemClickListener mListener) {
+        this.mListener = mListener;
+    }
+
     public class AppViewHolder extends RecyclerView.ViewHolder {
         TextView nameText, phoneText, amountText, requestedDateText;
-
+        AppCompatButton approvedButton;
+        TextInputEditText phoneEditText;
+        TextInputLayout phoneError;
         public AppViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -51,6 +70,28 @@ public class Withdraw_request_adapter extends RecyclerView.Adapter<Withdraw_requ
             phoneText = itemView.findViewById(R.id.phoneTextID);
             amountText = itemView.findViewById(R.id.amountTextID);
             requestedDateText = itemView.findViewById(R.id.requestedDateTextID);
+            approvedButton = itemView.findViewById(R.id.approvedButtonID);
+            phoneEditText = itemView.findViewById(R.id.phoneEditTextID);
+            phoneError = itemView.findViewById(R.id.phoneErrorID);
+
+            approvedButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Session_Management session_management = new Session_Management(itemView.getContext());
+                    phoneError.setErrorEnabled(false);
+                    if(TextUtils.isEmpty(phoneEditText.getText().toString().trim())){
+                        phoneError.setError(" ");
+                    }else {
+                        session_management.saveAcceptPhone(phoneEditText.getText().toString().trim());
+                    }
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.OnItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

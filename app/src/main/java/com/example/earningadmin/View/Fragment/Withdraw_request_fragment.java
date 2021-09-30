@@ -17,13 +17,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.earningadmin.Adapter.Withdraw_request_adapter;
+import com.example.earningadmin.Model.RequestApprove.Phone_response;
+import com.example.earningadmin.Model.RequestApprove.Request_approve_response;
+import com.example.earningadmin.Model.Session_Management;
 import com.example.earningadmin.Model.allWithdrow_response;
 import com.example.earningadmin.Model.pendingWithdrowRequest_response;
 import com.example.earningadmin.R;
 import com.example.earningadmin.ViewModel.AllWithdrow;
+import com.example.earningadmin.ViewModel.ApproveRequestViewModel;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
-public class Withdraw_request_fragment extends Fragment {
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+public class Withdraw_request_fragment extends Fragment implements Withdraw_request_adapter.OnItemClickListener {
 
     RecyclerView withdrawView;
     ImageView backButton;
@@ -32,6 +39,8 @@ public class Withdraw_request_fragment extends Fragment {
     TextView totalAmountText;
     private pendingWithdrowRequest_response pendingList;
     private Withdraw_request_adapter adapter;
+    Session_Management session_management;
+    ApproveRequestViewModel approveRequestViewModel;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -49,6 +58,7 @@ public class Withdraw_request_fragment extends Fragment {
                 pendingList = new pendingWithdrowRequest_response();
                 pendingList = pendingWithdrowRequest_response;
                 adapter = new Withdraw_request_adapter(pendingList);
+                adapter.setOnClickListener(Withdraw_request_fragment.this::OnItemClick);
                 withdrawView.setAdapter(adapter);
             }
         });
@@ -59,7 +69,10 @@ public class Withdraw_request_fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.withdraw_request_fragment, container, false);
 
+        session_management = new Session_Management(getActivity());
+
         allWithdrow = new ViewModelProvider(this).get(AllWithdrow.class);
+        approveRequestViewModel = new ViewModelProvider(this).get(ApproveRequestViewModel.class);
 
         backButton = (ImageView) view.findViewById(R.id.backButtonID);
         backButton.setOnClickListener(v -> requireActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
@@ -90,5 +103,34 @@ public class Withdraw_request_fragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void OnItemClick(int position) {
+        pendingWithdrowRequest_response.pendingRequest response = pendingList.getPending_list().get(position);
+
+        String requestID = response.getRequest_id();
+        String userID = response.getUser_id();
+        String userName = response.getUser_name();
+        String w_amount = response.getAmount();
+        String w_number = response.getNumber();
+        String accept_number = session_management.getAcceptPhone();
+        String req_date = response.getRequest_date();
+        String accept_date = new SimpleDateFormat("dd-MMM-yyyy").format(Calendar.getInstance().getTime());
+
+
+        approveRequestViewModel.approveRequest(requestID, userID, userName, w_amount, w_number, accept_number, req_date, accept_date).observe(getViewLifecycleOwner(), new Observer<Request_approve_response>() {
+            @Override
+            public void onChanged(Request_approve_response request_approve_response) {
+                Toast.makeText(getActivity(), request_approve_response.getMessage(), Toast.LENGTH_SHORT).show();
+                if(request_approve_response.getMessage().equals("added successfully")){
+                    pendingList.getPending_list().remove(position);
+                    adapter.notifyDataSetChanged();
+                }else if(request_approve_response.getMessage().equals("fail to add")){
+                    Toast.makeText(getActivity(), getString(R.string.something_wrong), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
     }
 }

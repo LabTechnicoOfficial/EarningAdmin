@@ -23,25 +23,25 @@ import com.example.earningadmin.ViewModel.CommissionViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class Video_commission_fragment extends Fragment {
+public class Video_watch_commission_fragment extends Fragment {
 
+    String current_rate;
     ImageView backButton;
-    CommissionViewModel commissionViewModel;
+    TextView currentRateText, rateText;
     TextInputLayout rateError;
-    TextInputEditText rateText;
     AppCompatButton updateButton;
     Dialog loaderDialog;
-    String current_rate;
-    TextView currentRateText;
-    public Video_commission_fragment(String current_rate) {
+    CommissionViewModel commissionViewModel;
+
+    public Video_watch_commission_fragment(String current_rate) {
         this.current_rate = current_rate;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.video_commission_fragment, container, false);
+        View view = inflater.inflate(R.layout.video_watch_commission_fragment, container, false);
+
         commissionViewModel = new ViewModelProvider(this).get(CommissionViewModel.class);
 
         backButton = (ImageView) view.findViewById(R.id.backButtonID);
@@ -70,7 +70,7 @@ public class Video_commission_fragment extends Fragment {
                 if (TextUtils.isEmpty(rate)) {
                     rateError.setError(" ");
                 } else {
-                    update_commission(rate);
+                    update_Watch_commission(rate);
                 }
             }
         });
@@ -78,9 +78,10 @@ public class Video_commission_fragment extends Fragment {
         return view;
     }
 
-    private void update_commission(String rate) {
+    private void update_Watch_commission(String rate) {
+        //Toast.makeText(getActivity(), rate, Toast.LENGTH_SHORT).show();
         loaderDialog.show();
-        commissionViewModel.updateVideoCommission(rate).observe(getViewLifecycleOwner(), new Observer<String>() {
+        commissionViewModel.updateVideoWatchCommission(rate).observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 loaderDialog.dismiss();

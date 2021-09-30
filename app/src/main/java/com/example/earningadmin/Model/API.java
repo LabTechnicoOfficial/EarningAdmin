@@ -40,7 +40,4 @@ public interface API {
     @GET("get_balance.php")
     Call<balance_response> getBalance(@Query("phone") String phone,@Query("password") String password);
 
-
-
-
 }
