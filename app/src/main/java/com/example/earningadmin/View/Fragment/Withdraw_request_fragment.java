@@ -127,10 +127,10 @@ public class Withdraw_request_fragment extends Fragment implements Withdraw_requ
         String w_number = response.getNumber();
         String accept_number = session_management.getAcceptPhone();
         String req_date = response.getRequest_date();
-        String accept_date = new SimpleDateFormat("dd-MMM-yyyy").format(Calendar.getInstance().getTime());
-        String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+        String accept_date = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+        //String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
         loaderDialog.show();
-        approveRequestViewModel.approveRequest(requestID, userID, userName, w_amount, w_number, accept_number, req_date, accept_date+" "+currentTime).observe(getViewLifecycleOwner(), new Observer<Request_approve_response>() {
+        approveRequestViewModel.approveRequest(requestID, userID, userName, w_amount, w_number, accept_number, req_date, accept_date).observe(getViewLifecycleOwner(), new Observer<Request_approve_response>() {
             @Override
             public void onChanged(Request_approve_response request_approve_response) {
                 loaderDialog.dismiss();
