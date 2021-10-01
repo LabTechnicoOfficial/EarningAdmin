@@ -1,6 +1,7 @@
 package com.example.earningadmin.Model;
 
 import com.example.earningadmin.Model.ADDMOB.ADDMOB_API;
+import com.example.earningadmin.Model.AddAmount.AddAmount_API;
 import com.example.earningadmin.Model.Commission.Commission_API;
 import com.example.earningadmin.Model.Method.Method_API;
 import com.example.earningadmin.Model.RequestApprove.Request_approve_API;
@@ -29,5 +30,9 @@ public class ApiUtilize {
 
     public static Method_API methodApi(){
         return Retrofit_Client.getClient(BASE_URL).create(Method_API.class);
+    }
+
+    public static AddAmount_API addAmountApi(){
+        return Retrofit_Client.getClient(BASE_URL).create(AddAmount_API.class);
     }
 }

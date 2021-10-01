@@ -33,7 +33,7 @@ public class Main_fragment extends Fragment implements NavigationView.OnNavigati
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle actionBarDrawerToggle;
-    LinearLayout withdrawRequestButton, usersButton, withdrawHistoryButton, paymentMethodButton;
+    LinearLayout withdrawRequestButton, usersButton, withdrawHistoryButton, paymentMethodButton, amountButton;
     LinearLayout videoWatchRateButton, withdrawCommissionButton, videoCommissionButton, addMobButton;
     Session_Management session_management;
     TextView balanceText, withdrawCommissionText, videoCommissionText, videoWatchCommissionText;
@@ -115,10 +115,21 @@ public class Main_fragment extends Fragment implements NavigationView.OnNavigati
         videoWatchRateButton = (LinearLayout) view.findViewById(R.id.videoWatchRateButtonID);
         addMobButton = (LinearLayout) view.findViewById(R.id.addMobButtonID);
         paymentMethodButton = (LinearLayout) view.findViewById(R.id.paymentMethodButtonID);
+        amountButton = (LinearLayout) view.findViewById(R.id.amountButtonID);
 
         withdrawCommissionText = (TextView) view.findViewById(R.id.withdrawCommissionTextID);
         videoCommissionText = (TextView) view.findViewById(R.id.videoCommissionTextID);
-        videoWatchCommissionText =(TextView) view.findViewById(R.id.videoWatchCommissionTextID);
+        videoWatchCommissionText = (TextView) view.findViewById(R.id.videoWatchCommissionTextID);
+
+        amountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out // popExit
+                ).replace(R.id.frame_container, new Add_amount_fragment()).addToBackStack(null).commit();
+            }
+        });
 
         paymentMethodButton.setOnClickListener(new View.OnClickListener() {
             @Override
