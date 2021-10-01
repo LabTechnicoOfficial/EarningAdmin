@@ -9,13 +9,16 @@
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/add__mob_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/all_user_frament.xml" value="0.19010416666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/card_all_users.xml" value="0.20416666666666666" />
+        <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/card_method.xml" value="0.20416666666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/card_pendin_request.xml" value="0.20416666666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/card_pending_request.xml" value="0.20416666666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/card_withdraw_history.xml" value="0.20416666666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/exit_alert.xml" value="0.20416666666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/loader_alert.xml" value="0.20416666666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/login_fragment.xml" value="0.20416666666666666" />
-        <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/main_fragment.xml" value="0.25" />
+        <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/main_fragment.xml" value="0.22" />
+        <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/method_add_alert.xml" value="0.20416666666666666" />
+        <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/payment_method_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/video_commission_fragment.xml" value="0.19010416666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/video_watch_commission_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/withdraw_commission_update_fragment.xml" value="0.20416666666666666" />

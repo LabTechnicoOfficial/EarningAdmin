@@ -33,7 +33,7 @@ public class Main_fragment extends Fragment implements NavigationView.OnNavigati
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle actionBarDrawerToggle;
-    LinearLayout withdrawRequestButton, usersButton, withdrawHistoryButton;
+    LinearLayout withdrawRequestButton, usersButton, withdrawHistoryButton, paymentMethodButton;
     LinearLayout videoWatchRateButton, withdrawCommissionButton, videoCommissionButton, addMobButton;
     Session_Management session_management;
     TextView balanceText, withdrawCommissionText, videoCommissionText, videoWatchCommissionText;
@@ -114,10 +114,21 @@ public class Main_fragment extends Fragment implements NavigationView.OnNavigati
         videoCommissionButton = (LinearLayout) view.findViewById(R.id.videoCommissionButtonID);
         videoWatchRateButton = (LinearLayout) view.findViewById(R.id.videoWatchRateButtonID);
         addMobButton = (LinearLayout) view.findViewById(R.id.addMobButtonID);
+        paymentMethodButton = (LinearLayout) view.findViewById(R.id.paymentMethodButtonID);
 
         withdrawCommissionText = (TextView) view.findViewById(R.id.withdrawCommissionTextID);
         videoCommissionText = (TextView) view.findViewById(R.id.videoCommissionTextID);
         videoWatchCommissionText =(TextView) view.findViewById(R.id.videoWatchCommissionTextID);
+
+        paymentMethodButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out // popExit
+                ).replace(R.id.frame_container, new Payment_method_fragment()).addToBackStack(null).commit();
+            }
+        });
 
         addMobButton.setOnClickListener(new View.OnClickListener() {
             @Override
