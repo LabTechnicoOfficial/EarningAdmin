@@ -18,6 +18,16 @@ public class pendingWithdrowRequest_response {
         private String number;
         @SerializedName("request_date")
         private String request_date;
+        @SerializedName("method")
+        private String method;
+
+        public String getMethod() {
+            return method;
+        }
+
+        public void setMethod(String method) {
+            this.method = method;
+        }
 
         public String getRequest_id() {
             return request_id;

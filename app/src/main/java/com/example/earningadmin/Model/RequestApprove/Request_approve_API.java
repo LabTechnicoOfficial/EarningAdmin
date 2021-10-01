@@ -16,6 +16,7 @@ public interface Request_approve_API {
                                            @Field("amount") String amount,
                                            @Field("number") String number,
                                            @Field("accept_number") String accept_number,
+                                           @Field("method") String method,
                                            @Field("request_date") String request_date,
                                            @Field("accept_date") String accept_date);
 }

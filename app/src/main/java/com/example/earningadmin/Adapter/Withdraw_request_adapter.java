@@ -41,6 +41,7 @@ public class Withdraw_request_adapter extends RecyclerView.Adapter<Withdraw_requ
         holder.amountText.setText(response.getAmount());
         holder.phoneText.setText(response.getNumber());
         holder.requestedDateText.setText(response.getRequest_date());
+        holder.methodText.setText(response.getMethod());
     }
 
     @Override
@@ -59,16 +60,18 @@ public class Withdraw_request_adapter extends RecyclerView.Adapter<Withdraw_requ
     }
 
     public class AppViewHolder extends RecyclerView.ViewHolder {
-        TextView nameText, phoneText, amountText, requestedDateText;
+        TextView nameText, phoneText, amountText, requestedDateText, methodText;
         AppCompatButton approvedButton;
         TextInputEditText phoneEditText;
         TextInputLayout phoneError;
+
         public AppViewHolder(@NonNull View itemView) {
             super(itemView);
 
             nameText = itemView.findViewById(R.id.nameTextID);
             phoneText = itemView.findViewById(R.id.phoneTextID);
             amountText = itemView.findViewById(R.id.amountTextID);
+            methodText = itemView.findViewById(R.id.methodTextID);
             requestedDateText = itemView.findViewById(R.id.requestedDateTextID);
             approvedButton = itemView.findViewById(R.id.approvedButtonID);
             phoneEditText = itemView.findViewById(R.id.phoneEditTextID);
@@ -79,9 +82,9 @@ public class Withdraw_request_adapter extends RecyclerView.Adapter<Withdraw_requ
                 public void onClick(View v) {
                     Session_Management session_management = new Session_Management(itemView.getContext());
                     phoneError.setErrorEnabled(false);
-                    if(TextUtils.isEmpty(phoneEditText.getText().toString().trim())){
+                    if (TextUtils.isEmpty(phoneEditText.getText().toString().trim())) {
                         phoneError.setError(" ");
-                    }else {
+                    } else {
                         session_management.saveAcceptPhone(phoneEditText.getText().toString().trim());
                     }
                     if (mListener != null) {

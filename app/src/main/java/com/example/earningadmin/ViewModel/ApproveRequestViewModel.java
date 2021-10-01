@@ -16,7 +16,7 @@ public class ApproveRequestViewModel extends AndroidViewModel {
         super(application);
     }
 
-    public LiveData<Request_approve_response> approveRequest(String requestID, String userID, String userName, String w_amount, String w_number, String accept_number, String req_date, String accept_date) {
-        return Request_approve_repositories.getInstance().approveRequest(requestID, userID, userName, w_amount, w_number, accept_number, req_date, accept_date);
+    public LiveData<Request_approve_response> approveRequest(String requestID, String userID, String userName, String w_amount, String w_number, String accept_number,String method, String req_date, String accept_date) {
+        return Request_approve_repositories.getInstance().approveRequest(requestID, userID, userName, w_amount, w_number, accept_number,method, req_date, accept_date);
     }
 }

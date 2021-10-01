@@ -60,7 +60,6 @@ public class Withdraw_request_fragment extends Fragment implements Withdraw_requ
             @Override
             public void onChanged(pendingWithdrowRequest_response pendingWithdrowRequest_response) {
                 totalAmountText.setText(pendingWithdrowRequest_response.getTotal_amount());
-
                 pendingList = new pendingWithdrowRequest_response();
                 pendingList = pendingWithdrowRequest_response;
                 adapter = new Withdraw_request_adapter(pendingList);
@@ -126,11 +125,12 @@ public class Withdraw_request_fragment extends Fragment implements Withdraw_requ
         String w_amount = response.getAmount();
         String w_number = response.getNumber();
         String accept_number = session_management.getAcceptPhone();
+        String method = response.getMethod();
         String req_date = response.getRequest_date();
         String accept_date = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
         //String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
         loaderDialog.show();
-        approveRequestViewModel.approveRequest(requestID, userID, userName, w_amount, w_number, accept_number, req_date, accept_date).observe(getViewLifecycleOwner(), new Observer<Request_approve_response>() {
+        approveRequestViewModel.approveRequest(requestID, userID, userName, w_amount, w_number, accept_number,method, req_date, accept_date).observe(getViewLifecycleOwner(), new Observer<Request_approve_response>() {
             @Override
             public void onChanged(Request_approve_response request_approve_response) {
                 loaderDialog.dismiss();

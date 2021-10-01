@@ -29,10 +29,10 @@ public class Request_approve_repositories {
         return request_approve_repositories;
     }
 
-    public MutableLiveData<Request_approve_response> approveRequest(String requestID, String userID, String userName, String w_amount, String w_number, String accept_number, String req_date, String accept_date) {
+    public MutableLiveData<Request_approve_response> approveRequest(String requestID, String userID, String userName, String w_amount, String w_number, String accept_number,String method, String req_date, String accept_date) {
         
-        Log.d("dataxxx", requestID+" "+userID+" "+userName+" "+ w_amount+" "+w_number+ " "+ accept_number+" "+req_date+" "+accept_date);
-        Call<Request_approve_response> call = requestApproveApi.requestApproveResponse(requestID, userID, userName, w_amount, w_number, accept_number, req_date, accept_date);
+        Log.d("dataxxx", requestID+" "+userID+" "+userName+" "+ w_amount+" "+w_number+ " "+ accept_number+" "+method+" "+req_date+" "+accept_date);
+        Call<Request_approve_response> call = requestApproveApi.requestApproveResponse(requestID, userID, userName, w_amount, w_number, accept_number,method, req_date, accept_date);
         call.enqueue(new Callback<Request_approve_response>() {
             @Override
             public void onResponse(Call<Request_approve_response> call, Response<Request_approve_response> response) {
