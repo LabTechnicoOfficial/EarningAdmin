@@ -29,6 +29,10 @@ public class login_repositories {
             public void onResponse(Call<response> call, Response<response> response) {
                 if (response.isSuccessful()) {
                     data.postValue(response.body());
+                }else {
+                    com.example.earningadmin.Model.response response1 = new response();
+                    response1.setMessage("invalid");
+                    data.postValue(response1);
                 }
             }
 
