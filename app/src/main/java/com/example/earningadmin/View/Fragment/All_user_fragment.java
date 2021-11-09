@@ -81,7 +81,7 @@ private void main()
                 }
 
                 //userList = new ArrayList<>();
-                userList = allUser_response;
+               // userList = allUser_response;
                // Toast.makeText(getActivity(),String.valueOf(allUser_response.size()),Toast.LENGTH_SHORT).show();
                 adapter = new All_users_adapter(userList);
                 allUsersView.setAdapter(adapter);
