@@ -10,9 +10,7 @@ public class ApiUtilize {
     public ApiUtilize() {
     }
 
-    //"https://alifew.com/ALive/earning_admin/"
     public static final String BASE_URL = "https://alifew.com/ALive/earning_admin/";
-    //"https://tiger50.com/earning_admin/";
 
     public static API api_response() {
 

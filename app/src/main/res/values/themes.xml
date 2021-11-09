@@ -11,6 +11,10 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/default_color</item>
+
         <!-- Customize your theme here. -->
+    </style>
+    <style name="ProgressBarStyle">
+        <item name="colorAccent">@color/pink</item>
     </style>
 </resources>

@@ -1,5 +1,7 @@
 package com.example.earningadmin.Model;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -9,8 +11,11 @@ import retrofit2.http.Query;
 
 public interface API {
     //all user api
-    @GET("all_user.php")
-    Call<allUser_response> getuser(@Query("token") String token);
+    @GET("all_user_details.php")
+    Call<all_user_details_response> getuserDetails(@Query("token") String token);
+
+    @GET("all_user1.php")
+    Call<List<allUser_response>> getuser(@Query("token") String token,@Query("page") int page,@Query("limit") int limit);
 
     //all withdrow api
 

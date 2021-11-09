@@ -11,11 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.earningadmin.Model.allUser_response;
 import com.example.earningadmin.R;
 
+import java.util.List;
+
 public class All_users_adapter extends RecyclerView.Adapter<All_users_adapter.AppViewHolder> {
 
-    private allUser_response userList;
+    private List<allUser_response> userList;
 
-    public All_users_adapter(allUser_response userList) {
+    public All_users_adapter(List<allUser_response> userList) {
         this.userList = userList;
     }
 
@@ -30,21 +32,21 @@ public class All_users_adapter extends RecyclerView.Adapter<All_users_adapter.Ap
     @Override
     public void onBindViewHolder(@NonNull AppViewHolder holder, int position) {
 
-        allUser_response.User response = userList.getUsers().get(position);
+        allUser_response response = userList.get(position);
         holder.nameText.setText(response.getUser_name());
         holder.phoneText.setText(response.getUser_phone());
         holder.mailText.setText(response.getUser_phone());
         holder.balanceText.setText(response.getUser_balance());
-        if(response.getUser_status().equals("1")){
+       /* if(response.getUser_status().equals("1")){
             holder.statusText.setText("Active");
         }else{
             holder.statusText.setText("Inactive");
-        }
+        }*/
     }
 
     @Override
     public int getItemCount() {
-        return userList.getUsers().size();
+        return userList.size();
     }
 
     public class AppViewHolder extends RecyclerView.ViewHolder {
@@ -55,7 +57,7 @@ public class All_users_adapter extends RecyclerView.Adapter<All_users_adapter.Ap
             nameText = itemView.findViewById(R.id.nameTextID);
             phoneText = itemView.findViewById(R.id.phoneTextID);
             mailText = itemView.findViewById(R.id.mailTextID);
-            statusText = itemView.findViewById(R.id.statusTextID);
+           // statusText = itemView.findViewById(R.id.statusTextID);
             balanceText = itemView.findViewById(R.id.balanceTextID);
         }
     }

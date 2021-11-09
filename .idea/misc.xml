@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android App/EarningAdmin/app/src/main/res/layout/all_user_fragment.xml" value="0.16666666666666666" />
+        <entry key="..\:/Android App/EarningAdmin/app/src/main/res/layout/card_all_users.xml" value="0.19947916666666668" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/drawable/add_icon.xml" value="0.2169230769230769" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/drawable/ripple_effect.xml" value="0.2203125" />
         <entry key="..\:/Educational/Apps/EarningAdmin/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
@@ -31,7 +33,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class allUser_response {
-    public class User {
+
         @SerializedName("user_id")
         private String user_id;
         @SerializedName("user_name")
@@ -66,36 +66,7 @@ public class allUser_response {
         public void setUser_status(String user_status) {
             this.user_status = user_status;
         }
-    }
 
-    @SerializedName("total_user")
-    private String total_user;
-    @SerializedName("total_user_balance")
-    private String total_user_balance;
-    @SerializedName("users")
-    private List<User> users;
 
-    public String getTotal_user() {
-        return total_user;
-    }
 
-    public void setTotal_user(String total_user) {
-        this.total_user = total_user;
-    }
-
-    public String getTotal_user_balance() {
-        return total_user_balance;
-    }
-
-    public void setTotal_user_balance(String total_user_balance) {
-        this.total_user_balance = total_user_balance;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
 }
