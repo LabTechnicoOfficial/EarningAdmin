@@ -43,7 +43,10 @@ public class Login_fragment extends Fragment {
         String phone = session_management.getPhone();
 
         if (!phone.equals("-1")) {
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new Main_fragment()).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
+                    R.anim.fade_in,  // enter
+                    R.anim.fade_out // popExit
+            ).replace(R.id.frame_container, new Main_fragment()).commit();
         }
 
         registerButton = (TextView) view.findViewById(R.id.registerButtonID);
@@ -93,7 +96,10 @@ public class Login_fragment extends Fragment {
                 loaderDialog.dismiss();
                 if (message.equals("successfull")) {
                     session_management.saveSession(phone, password);
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new Main_fragment()).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
+                            R.anim.fade_in,  // enter
+                            R.anim.fade_out // popExit
+                    ).replace(R.id.frame_container, new Main_fragment()).commit();
                 } else {
                     Toast.makeText(getActivity(), "Invalid phone/password", Toast.LENGTH_SHORT).show();
                 }

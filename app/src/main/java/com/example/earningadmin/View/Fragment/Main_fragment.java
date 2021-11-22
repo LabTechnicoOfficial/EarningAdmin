@@ -28,6 +28,8 @@ import com.example.earningadmin.ViewModel.Balance;
 import com.example.earningadmin.ViewModel.CommissionViewModel;
 import com.google.android.material.navigation.NavigationView;
 
+import java.nio.channels.ClosedByInterruptException;
+
 public class Main_fragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -35,6 +37,7 @@ public class Main_fragment extends Fragment implements NavigationView.OnNavigati
     ActionBarDrawerToggle actionBarDrawerToggle;
     LinearLayout withdrawRequestButton, usersButton, withdrawHistoryButton, paymentMethodButton, amountButton;
     LinearLayout videoWatchRateButton, withdrawCommissionButton, videoCommissionButton, addMobButton;
+    LinearLayout addVideoButton;
     Session_Management session_management;
     TextView balanceText, withdrawCommissionText, videoCommissionText, videoWatchCommissionText;
     Balance balance;
@@ -116,6 +119,7 @@ public class Main_fragment extends Fragment implements NavigationView.OnNavigati
         addMobButton = (LinearLayout) view.findViewById(R.id.addMobButtonID);
         paymentMethodButton = (LinearLayout) view.findViewById(R.id.paymentMethodButtonID);
         amountButton = (LinearLayout) view.findViewById(R.id.amountButtonID);
+        addVideoButton = (LinearLayout) view.findViewById(R.id.addVideoButtonID);
 
         withdrawCommissionText = (TextView) view.findViewById(R.id.withdrawCommissionTextID);
         videoCommissionText = (TextView) view.findViewById(R.id.videoCommissionTextID);
@@ -125,7 +129,7 @@ public class Main_fragment extends Fragment implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
-                        R.anim.slide_in,  // enter
+                        R.anim.fade_in,  // enter
                         R.anim.fade_out // popExit
                 ).replace(R.id.frame_container, new Add_amount_fragment()).addToBackStack(null).commit();
             }
@@ -135,7 +139,7 @@ public class Main_fragment extends Fragment implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
-                        R.anim.slide_in,  // enter
+                        R.anim.fade_in,  // enter
                         R.anim.fade_out // popExit
                 ).replace(R.id.frame_container, new Payment_method_fragment()).addToBackStack(null).commit();
             }
@@ -145,7 +149,7 @@ public class Main_fragment extends Fragment implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
-                        R.anim.slide_in,  // enter
+                        R.anim.fade_in,  // enter
                         R.anim.fade_out // popExit
                 ).replace(R.id.frame_container, new ADD_Mob_fragment()).addToBackStack(null).commit();
             }
@@ -155,7 +159,7 @@ public class Main_fragment extends Fragment implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
-                        R.anim.slide_in,  // enter
+                        R.anim.fade_in,  // enter
                         R.anim.fade_out // popExit
                 ).replace(R.id.frame_container, new Video_watch_commission_fragment(videoWatchCommissionText.getText().toString().trim())).addToBackStack(null).commit();
             }
@@ -165,7 +169,7 @@ public class Main_fragment extends Fragment implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
-                        R.anim.slide_in,  // enter
+                        R.anim.fade_in,  // enter
                         R.anim.fade_out // popExit
                 ).replace(R.id.frame_container, new Withdraw_history_fragment()).addToBackStack(null).commit();
             }
@@ -175,7 +179,7 @@ public class Main_fragment extends Fragment implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
-                        R.anim.slide_in,  // enter
+                        R.anim.fade_in,  // enter
                         R.anim.fade_out  // popExit
                 ).replace(R.id.frame_container, new Withdraw_request_fragment()).addToBackStack(null).commit();
             }
@@ -185,7 +189,7 @@ public class Main_fragment extends Fragment implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
-                        R.anim.slide_in,  // enter
+                        R.anim.fade_in,  // enter
                         R.anim.fade_out // popExit
                 ).replace(R.id.frame_container, new All_user_fragment()).addToBackStack(null).commit();
             }
@@ -195,7 +199,7 @@ public class Main_fragment extends Fragment implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
-                        R.anim.slide_in,  // enter
+                        R.anim.fade_in,  // enter
                         R.anim.fade_out // popExit
                 ).replace(R.id.frame_container, new Withdraw_commission_update_fragment(withdrawCommissionText.getText().toString().trim())).addToBackStack(null).commit();
             }
@@ -205,9 +209,20 @@ public class Main_fragment extends Fragment implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
-                        R.anim.slide_in,  // enter
+                        R.anim.fade_in,  // enter
                         R.anim.fade_out // popExit
                 ).replace(R.id.frame_container, new Video_commission_fragment(videoCommissionText.getText().toString().trim())).addToBackStack(null).commit();
+            }
+        });
+
+        addVideoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
+                        R.anim.fade_in,  // enter
+                        R.anim.fade_out // popExit
+                ).replace(R.id.frame_container, new Video_fragment()).addToBackStack(null).commit();
+
             }
         });
 

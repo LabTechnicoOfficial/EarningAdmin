@@ -125,7 +125,7 @@ public class Payment_method_fragment extends Fragment implements Method_list_ada
 
         backButton = (ImageView) view.findViewById(R.id.backButtonID);
         backButton.setOnClickListener(v -> requireActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
-                R.anim.slide_in,  // enter
+                R.anim.fade_in,  // enter
                 R.anim.fade_out // popExit
         ).replace(R.id.frame_container, new Main_fragment()).commit());
 

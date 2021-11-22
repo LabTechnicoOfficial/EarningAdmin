@@ -5,6 +5,7 @@ import com.example.earningadmin.Model.AddAmount.AddAmount_API;
 import com.example.earningadmin.Model.Commission.Commission_API;
 import com.example.earningadmin.Model.Method.Method_API;
 import com.example.earningadmin.Model.RequestApprove.Request_approve_API;
+import com.example.earningadmin.Model.UploadVideo.Video_api;
 
 public class ApiUtilize {
     public ApiUtilize() {
@@ -35,5 +36,9 @@ public class ApiUtilize {
 
     public static AddAmount_API addAmountApi(){
         return Retrofit_Client.getClient(BASE_URL).create(AddAmount_API.class);
+    }
+
+    public static Video_api upload_api(){
+        return Retrofit_Client.getClient(BASE_URL).create(Video_api.class);
     }
 }

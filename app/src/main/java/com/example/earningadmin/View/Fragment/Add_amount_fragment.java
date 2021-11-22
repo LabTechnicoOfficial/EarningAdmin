@@ -106,7 +106,6 @@ public class Add_amount_fragment extends Fragment implements Amount_adapter.OnIt
                 amountList = new ArrayList<>();
                 amountList = addAmount_responses;
                 adapter = new Amount_adapter(amountList);
-                adapter.setOnDeleteListener(Add_amount_fragment.this::OnItemDelete);
                 amountView.setAdapter(adapter);
             }
         });
@@ -120,7 +119,7 @@ public class Add_amount_fragment extends Fragment implements Amount_adapter.OnIt
         addAmountButton = (FloatingActionButton) view.findViewById(R.id.addAmountButtonID);
         backButton = (ImageView) view.findViewById(R.id.backButtonID);
         backButton.setOnClickListener(v -> requireActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(
-                R.anim.slide_in,  // enter
+                R.anim.fade_in,  // enter
                 R.anim.fade_out // popExit
         ).replace(R.id.frame_container, new Main_fragment()).commit());
 

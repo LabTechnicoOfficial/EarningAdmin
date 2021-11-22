@@ -47,7 +47,7 @@ public class Amount_adapter extends RecyclerView.Adapter<Amount_adapter.AppViewH
         void OnItemDelete(int position);
     }
 
-    public void setOnDeleteListener(Amount_adapter.OnItemDelete mListener) {
+    public void setOnClickListener(Amount_adapter.OnItemDelete mListener) {
         this.mListener = mListener;
     }
 
