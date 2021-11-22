@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.MediaController;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -109,21 +110,43 @@ public class Video_fragment extends Fragment implements Video_adapter.OnItemDele
         Video_response response = videoList.get(position);
         String id = response.getId();
 
-        loaderDialog.show();
-        videoViewModel.deleteVideo(id).observe(getViewLifecycleOwner(), new Observer<Server_response>() {
-            @Override
-            public void onChanged(Server_response server_response) {
-                String message = server_response.getMessage();
-                loaderDialog.dismiss();
+        Dialog deleteDialog = new Dialog(getActivity());
+        deleteDialog.setContentView(R.layout.delete_alert);
+        deleteDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        deleteDialog.setCancelable(false);
 
-                if (message.equals("success")) {
-                    Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
-                    fetch_videos();
-                } else {
-                    Toast.makeText(getActivity(), getString(R.string.something_wrong), Toast.LENGTH_SHORT).show();
-                }
+        TextView yesButton = deleteDialog.findViewById(R.id.yesButtonID);
+        TextView noButton = deleteDialog.findViewById(R.id.noButtonID);
+
+        noButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteDialog.dismiss();
             }
         });
+
+        yesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loaderDialog.show();
+                videoViewModel.deleteVideo(id).observe(getViewLifecycleOwner(), new Observer<Server_response>() {
+                    @Override
+                    public void onChanged(Server_response server_response) {
+                        String message = server_response.getMessage();
+                        loaderDialog.dismiss();
+
+                        if (message.equals("success")) {
+                            deleteDialog.dismiss();
+                            Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+                            fetch_videos();
+                        } else {
+                            Toast.makeText(getActivity(), getString(R.string.something_wrong), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+
 
     }
 
