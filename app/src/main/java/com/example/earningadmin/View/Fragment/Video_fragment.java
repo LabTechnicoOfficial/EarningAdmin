@@ -232,7 +232,7 @@ public class Video_fragment extends Fragment implements Video_adapter.OnItemDele
 
         // Media playback takes a lot of resources, so everything should be
         // stopped and released at this time.
-        releasePlayer();
+        //releasePlayer();
     }
 
     private void releasePlayer() {
